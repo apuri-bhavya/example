@@ -1,60 +1,55 @@
-package com.example.week2;
+package week-2;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 public class MainActivity extends AppCompatActivity {
-    EditText editTextNumber1, editTextNumber2;
-    Button Add, Subtract, Multiply, Divide;
-    TextView textViewResult;
+
+    EditText editTextName;
+    EditText editTextContact;
+    EditText editTextCity;
+
+    Button buttonSubmit;
+    TextView textViewDisplay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        editTextNumber1 = findViewById(R.id.editTextNumber1);
-        editTextNumber2 = findViewById(R.id.editTextNumber2);
-        Add = findViewById(R.id.btnAdd);
-        Subtract = findViewById(R.id.btnSubtract);
-        Multiply = findViewById(R.id.btnMultiply);
-        Divide = findViewById(R.id.btnDivide);
-        textViewResult = findViewById(R.id.textViewResult);
-        Add.setOnClickListener(v -> calculate('+'));
-        Subtract.setOnClickListener(v -> calculate('-'));
-        Multiply.setOnClickListener(v -> calculate('*'));
-        Divide.setOnClickListener(v -> calculate('/'));
-    }      @SuppressLint("SetTextI18n")
-    private void calculate(char operator) {
-        String num1Str = editTextNumber1.getText().toString();
-        String num2Str = editTextNumber2.getText().toString();
 
+        // Initialize views
+        editTextName = findViewById(R.id.editTextName);
+        editTextContact = findViewById(R.id.editTextContact);
+        editTextCity = findViewById(R.id.editTextCity);
 
-        if (num1Str.isEmpty() || num2Str.isEmpty()) {
-            textViewResult.setText("Please enter both numbers");
-            return;
-        }
-        double num1 = Double.parseDouble(num1Str);
-        double num2 = Double.parseDouble(num2Str);
-        double result = 0;
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 == 0) {
-                    textViewResult.setText("Cannot divide by zero");
-                    return;
-                }
-                result = num1 / num2;
-                break;
-        }
-        textViewResult.setText("Result: " + result);
+        buttonSubmit = findViewById(R.id.buttonSubmit);
+        textViewDisplay = findViewById(R.id.textViewDisplay);
+
+        // Set listener for button
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                // Get input values
+                String name = editTextName.getText().toString().trim();
+                String contact = editTextContact.getText().toString().trim();
+                String city = editTextCity.getText().toString().trim();
+
+                // Display the values
+                String displayText =
+                        "Name: " + name +
+                        "\nContact: " + contact +
+                        "\nCity: " + city;
+
+                textViewDisplay.setText(displayText);
+            }
+        });
     }
 }
