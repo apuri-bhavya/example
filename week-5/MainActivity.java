@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         editor.apply();
 
-        textDisplay.setText(
-                "Saved: " + name + ", " + age + ", " + gender
-        );
+        textDisplay.setText("Saved: " + name + ", " + age + ", " + gender );
     }
 
     private void loadUserData() {
@@ -64,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         String age = sharedPreferences.getString("Age", "Not set");
         String gender = sharedPreferences.getString("Gender", "Not set");
 
-        textDisplay.setText(
-                "Loaded: " + name + ", " + age + ", " + gender
-        );
+        textDisplay.setText("Loaded: " + name + ", " + age + ", " + gender);
     }
 }
