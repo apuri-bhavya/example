@@ -1,5 +1,3 @@
-package week-3;
-package com.example.nameapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
