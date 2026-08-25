@@ -11,12 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView listViewNames;
 
-    String[] names = {
-        "Alice",
-        "Bob",
-        "Charlie",
-        "David"
-    };
+    String[] names = {"Alice","Bob","Charlie","David"};
 
     String[] details = {
         "Alice - Android Developer from NYC",
@@ -33,25 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
         listViewNames = findViewById(R.id.listViewNames);
 
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(
-                        this,
-                        android.R.layout.simple_list_item_1,
-                        names
-                );
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,names);
 
         listViewNames.setAdapter(adapter);
 
-        listViewNames.setOnItemClickListener(
-                (parent, view, position, id) -> {
+        listViewNames.setOnItemClickListener((parent, view, position, id) -> {
 
-                    Intent intent = new Intent(
-                            MainActivity.this,
-                            DetailActivity.class
-                    );
-
+                    Intent intent = new Intent(MainActivity.this,DetailActivity.class);
                     intent.putExtra("details", details[position]);
-
                     startActivity(intent);
                 }
         );
