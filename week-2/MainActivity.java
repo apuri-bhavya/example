@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editTextName;
-    EditText editTextContact;
-    EditText editTextCity;
+    EditText t1n;
+    EditText t2c;
+    EditText t3city;
 
-    Button buttonSubmit;
+    Button btnSubmit;
     TextView textViewDisplay;
 
     @Override
@@ -23,20 +23,20 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        editTextName = findViewById(R.id.editTextName);
-        editTextContact = findViewById(R.id.editTextContact);
-        editTextCity = findViewById(R.id.editTextCity);
+        t1n = findViewById(R.id.editTextName);
+        t2c = findViewById(R.id.editTextContact);
+        t3city = findViewById(R.id.editTextCity);
 
-        buttonSubmit = findViewById(R.id.buttonSubmit);
+        btnSubmit = findViewById(R.id.buttonSubmit);
         textViewDisplay = findViewById(R.id.textViewDisplay);
-        buttonSubmit.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                String name = editTextName.getText().toString().trim();
-                String contact = editTextContact.getText().toString().trim();
-                String city = editTextCity.getText().toString().trim();
+                String name = t1n.getText().toString().trim();
+                String contact = t2c.getText().toString().trim();
+                String city = t3city.getText().toString().trim();
                 String displayText ="Name: " + name +"\nContact: " + contact +"\nCity: " + city;
 
                 textViewDisplay.setText(displayText);
