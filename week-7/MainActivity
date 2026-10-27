@@ -1,0 +1,43 @@
+package com.example.myapplication;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.net.Uri;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity {
+
+    public static final String NOTIFICATION_CHANNEL_ID = "10001";
+    private static final String CHANNEL_NAME = "Notification Channel";
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button btnCreateNotification =
+                findViewById(R.id.btnCreateNotification);
+
+        createNotificationChannel();
+        requestNotificationPermission();
+
+        btnCreateNotification.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                createNotification();
+
+                Toast.makeText(MainActivity.this,
+                        "Hello! This is my first push notification",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}
