@@ -41,3 +41,78 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import android.app.*;
+import android.content.*;
+import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    String CHANNEL_ID = "10001";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button btn = findViewById(R.id.btnCreateNotification);
+
+        btn.setOnClickListener(v -> {
+            Uri sound = Uri.parse("android.resource://" +
+                    getPackageName() + "/raw/quite_impressed");
+
+            NotificationManager manager =
+                    (NotificationManager) getSystemService(
+                            Context.NOTIFICATION_SERVICE);
+
+            if (android.os.Build.VERSION.SDK_INT >= 26) {
+                NotificationChannel channel = new NotificationChannel(
+                        CHANNEL_ID, "Notifications",
+                        NotificationManager.IMPORTANCE_HIGH);
+
+                channel.enableLights(true);
+                channel.setLightColor(Color.RED);
+                channel.enableVibration(true);
+                channel.setSound(sound,
+                        new AudioAttributes.Builder()
+                                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                                .build());
+
+                manager.createNotificationChannel(channel);
+            }
+
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(this, CHANNEL_ID)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle("Test")
+                            .setContentText("Hello! This is my first notification")
+                            .setAutoCancel(true);
+
+            manager.notify(1, builder.build());
+        });
+    }
+}
