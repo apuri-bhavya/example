@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         btnWebsite = findViewById(R.id.btnWebsite);
         btnSMS = findViewById(R.id.btnSMS);
 
-        // Option 1: Dial a Number
         btnDial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Option 2: Open a Website
         btnWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Option 3: Send an SMS
         btnSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
